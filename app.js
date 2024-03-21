@@ -13,9 +13,7 @@ function getComputerChoice() {
     }
 }
 
-let userPick = prompt("Rock, Paper or Scissors?");
-let playerSelection = userPick.toLowerCase();
-let computerSelection = getComputerChoice();
+
 
 function playRound(playerSelection, computerSelection) {
 
@@ -33,10 +31,10 @@ function playRound(playerSelection, computerSelection) {
         return "You Win! Paper beats Rock";
     } else if (playerSelection === "paper" && computerSelection === "scissors") {
         computerScore++
-        return "You Loose! Scissors beat paper";
+        return "You Lose! Scissors beat paper";
     } else if (playerSelection === "scissors" && computerSelection === "rock") {
         computerScore++
-        return "You Loose! Rock beats Scissors";
+        return "You Lose! Rock beats Scissors";
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
         playerScore++
         return "You Win! Scissors beat Paper";
@@ -44,6 +42,9 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function playGame() {
+    let userPick = prompt("Rock, Paper or Scissors?");
+    let playerSelection = userPick.toLowerCase();
+    let computerSelection = getComputerChoice();
     console.log(playRound(playerSelection, computerSelection));
     console.log("Wins: " + playerScore);
     console.log("Draws: " + draws);
@@ -51,4 +52,16 @@ function playGame() {
 
 }
 
-console.log(playGame());
+for (let i = 0; i < 13; i++) {
+    if (playerScore === 5) {
+        console.log("Gongratulations, You Win!");
+        break;
+    } else if (computerScore === 5) {
+        console.log("Unlucky, You Lose!");
+        break;
+    } else if (draws === 5) {
+        console.log("It's a Draw!")
+        break;
+    }
+    playGame();
+}
